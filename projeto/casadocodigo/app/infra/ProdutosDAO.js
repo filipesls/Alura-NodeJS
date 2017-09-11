@@ -10,11 +10,9 @@ ProdutosDAO.prototype.salva = function(produto, callback){
     this._connection.query('insert into produtos set ?', produto, callback);
 }
 
-/* Outra maneira
-ProdutosDAO.prototype.salva = function (produto, callback) {
-    this._connection.query('insert into produtos (titulo, preco, descricao) values (?, ?, ?)',  [produto.titulo, produto.preco, produto.descricao], callback);
+ProdutosDAO.prototype.deleta = function(id, callback){
+	this._connection.query("delete from produtos where " + id, callback);
 }
-*/
 
 module.exports = function(){
     return ProdutosDAO;

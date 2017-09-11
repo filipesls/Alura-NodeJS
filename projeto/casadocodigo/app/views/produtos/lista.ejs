@@ -18,10 +18,13 @@
                     <td><%=lista[i].titulo%></td>
                     <td><%=lista[i].descricao%></td>
                     <td><%=lista[i].preco%></td>
+                    <td><a href="/produtos/deletar/:id='<%=lista[i].id%>'">deletar</a></td>
                 </tr>
             <%}%>
         </table>
 
+        <hr>
+        <a href="/produtos/form">Adicionar</a>
 
 	</body>
 </html>

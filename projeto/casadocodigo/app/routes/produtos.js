@@ -1,31 +1,48 @@
-module.exports = function(app){
+module.exports = function(app) {
 
-    var listaProdutos = function(req, res){
+    var listaProdutos = function(req, res) {
         var connection = app.infra.connectionFactory();
         var produtosDAO = new app.infra.ProdutosDAO(connection);
 
-        produtosDAO.lista(function(err, results){
-            res.render('produtos/lista',{lista:results});
+        produtosDAO.lista(function(err, results) {
+            res.render('produtos/lista', {lista: results});
         });
 
         connection.end();
     }
 
+    //lista produtos
     app.get('/produtos', listaProdutos);
 
-    app.get('/produtos/form', function(req, res){
+    //renderisa pagina de formulario
+    app.get('/produtos/form', function(req, res) {
         res.render('produtos/form');
-    })
+    });
 
-    app.post("/produtos",function(req,res) {
+    //Manda requisição para salvar novo item
+    app.post('/produtos', function(req, res) {
         var produto = req.body;
-        console.log(produto);
 
         var connection = app.infra.connectionFactory();
         var produtosDAO = new app.infra.ProdutosDAO(connection);
 
-        produtosDAO.salva(produto,function(erros,resultado){
+        produtosDAO.salva(produto, function(err, results) {
             res.redirect('/produtos');
+        });
+
+        connection.end();
+    });
+
+    // requisição para deletar um item
+    app.get("/produtos/deletar/:id", function(req, res){
+        var id = req.params.id; id = id.replace(":", "");
+
+        //conectando com o banco var produtosDao = new app.infra.ProdutosDAO(connection);
+        var connection = app.infra.connectionFactory();
+        var produtosDAO = new app.infra.ProdutosDAO(connection);
+
+        produtosDAO.deleta(id, function(err, results){
+            res.redirect("/produtos");
         });
 
         connection.end();
