@@ -5,7 +5,15 @@ module.exports = function(app) {
         var produtosDAO = new app.infra.ProdutosDAO(connection);
 
         produtosDAO.lista(function(err, results) {
-            res.render('produtos/lista', {lista: results});
+            res.format({
+                html: function(){
+                    res.render('produtos/lista', {lista: results});
+                },
+                json: function(){
+                    res.json(results)
+                }
+            });
+            
         });
 
         connection.end();
@@ -35,7 +43,8 @@ module.exports = function(app) {
 
     // requisição para deletar um item
     app.get("/produtos/deletar/:id", function(req, res){
-        var id = req.params.id; id = id.replace(":", "");
+        var id = req.params.id;
+        id = id.replace(":", "");
 
         //conectando com o banco var produtosDao = new app.infra.ProdutosDAO(connection);
         var connection = app.infra.connectionFactory();
@@ -46,6 +55,5 @@ module.exports = function(app) {
         });
 
         connection.end();
-
     });
 }
