@@ -24,21 +24,39 @@ module.exports = function(app) {
 
     //renderisa pagina de formulario
     app.get('/produtos/form', function(req, res) {
-        res.render('produtos/form');
+        res.render('produtos/form', {validationErrors:{}, produto:{}});
     });
 
     //Manda requisição para salvar novo item
-    app.post('/produtos', function(req, res) {
+    app.post("/produtos",function(req,res) {
         var produto = req.body;
+        console.log(produto);
 
         var connection = app.infra.connectionFactory();
-        var produtosDAO = new app.infra.ProdutosDAO(connection);
+        var produtosDao = new app.infra.ProdutosDAO(connection);
 
-        produtosDAO.salva(produto, function(err, results) {
-            res.redirect('/produtos');
+        var validadorTitulo = req.assert('titulo', 'Titulo deve ser preenchido').notEmpty();
+        req.assert('preco','Preco deve ser um número').isFloat();
+
+        var errors = req.validationErrors();
+        if(errors){
+            res.format({
+                html: function(){
+                    res.status(400).render('produtos/form', {validationErrors:errors, produto:produto});
+                },
+                json: function(){
+                    res.status(400).json(errors);
+                }
+            });
+            return;
+        }
+
+        produtosDao.salva(produto,function(erros,resultado){
+            res.redirect("/produtos");
         });
 
         connection.end();
+
     });
 
     // requisição para deletar um item
