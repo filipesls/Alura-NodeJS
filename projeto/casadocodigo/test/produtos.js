@@ -19,7 +19,8 @@ describe('ProdutosController',function(){
             if(res.headers['content-type'] == 'application/json;charset=utf-8'){
                 console.log("Content type ok");
             }
+
             done();
-        };       
+	    });
     });
 });
