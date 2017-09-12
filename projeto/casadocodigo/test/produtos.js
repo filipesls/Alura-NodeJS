@@ -1,26 +1,21 @@
 var http = require('http');
-describe('ProdutosController',function(){
+var assert = require('assert');
 
-    it('listagem json',function(done){
+describe('#ProdutosController', function() {
+    it('#listagem de produtos json', function (done) {
         var configuracoes = {
             hostname: 'localhost',
-            port:3000,
-            path:'/produtos',
+            port: 3000,
+            path: '/produtos',
             headers: {
-                'Accept' : 'application/json'
+                'Accept':'application/json'
             }
         };
 
-        http.get(configuracoes,function(res){
-            if(res.statusCode == 200){
-                console.log("Status ta ok");
-            }
-
-            if(res.headers['content-type'] == 'application/json;charset=utf-8'){
-                console.log("Content type ok");
-            }
-
+        http.get(configuracoes, function(res){
+            assert.equal(res.statusCode, 200);
+            assert.equal(res.headers['content-type'], 'application/json; charset=utf-8');
             done();
-	    });
+        });
     });
 });
