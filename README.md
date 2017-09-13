@@ -1,4 +1,4 @@
-# Course NodeJS bu Alura
+# Course NodeJS
 
 
 ## Aula 1 - Instalação do NodeJs
