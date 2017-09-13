@@ -58,11 +58,11 @@ mysql -u root -p
 ```
 
 ```
-mysql -u root -p
+create database casadocodigo_nodejs_test;
 ```
 
 ```
-create database casadocodigo_nodejs_test;
+use casadocodigo_nodejs_test;
 ```
 
 ```
