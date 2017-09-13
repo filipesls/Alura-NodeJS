@@ -1,87 +1,109 @@
-# Project Title
+# Course NodeJS bu Alura
 
-One Paragraph of project description goes here
 
-## Getting Started
+## Aula 1 - Instalação do NodeJs
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+## Aula 2 - Coesão e Acoplamento, organizando o código
 
-What things you need to install the software and how to install them
+
+## Aula 3 - Verbos http
+
+
+## Aula 4 - Content negotiation
+
+
+## Aula 5 - Respeitando o accept
+
+
+## Aula 6 - Entendendo os detalhes
+
+
+## Aula 7 - Testes de integração
+
+### ATIVIDADES - 01 - Instalando o Mocha e executando testes
+
+
+### ATIVIDADES - 02 - Instalação do Mocha e infra para testes
+
+
+### ATIVIDADES - 03 - Testando a listagem de produtos
+
+
+### ATIVIDADES - 04 - Melhorando as verificações de erro e acerto
+
+
+### ATIVIDADES - 05 - Caso de teste para a listagem de produtos.
+
+
+### ATIVIDADES - 06 - Lidando com o servidor nos testes
+
+
+### ATIVIDADES - 07 - Executando o teste sem precisar subir o servidor
+
+
+### ATIVIDADES - 08 - Testando o cadastro de produtos
+
+
+### ATIVIDADES - 09 - Implementando o teste para o cadastro
+
+
+### ATIVIDADES - 10 - Executando os testes em um banco exclusivo
+
+
+### ATIVIDADES - 11 - Passando os erros para o Express e criando o banco de testes
 
 ```
-Give examples
+mysql -u root -p
 ```
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
 ```
-Give the example
+mysql -u root -p
 ```
 
-And repeat
-
 ```
-until finished
+create database casadocodigo_nodejs_test;
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+CREATE TABLE produtos (id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,titulo varchar(255) DEFAULT NULL,descricao text,preco decimal(10,2) DEFAULT NULL);
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
+or
 ```
-Give an example
+CREATE TABLE produtos (
+    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    titulo varchar(255) DEFAULT NULL,
+    descricao text,
+    preco decimal(10,2) DEFAULT NULL
+);
 ```
 
-## Deployment
 
-Add additional notes about how to deploy this on a live system
+### ATIVIDADES - 12 - Separando o banco de teste e o de desenvolvimento
 
-## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+### ATIVIDADES - 13 - Limpando a tabela antes da execução de cada caso de teste
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+### ATIVIDADES - 14 - Limpando o banco para cada caso de teste
 
-## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+### ATIVIDADES - 15 - O que são testes automatizados?
 
-## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+### ATIVIDADES - 16 - Quando utilizar testes automatizados.
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
+### ATIVIDADES - 17 - Projeto da Aula 7
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+## Aula 8 - WebSockets com socket.io
+
+
+## Aula 9 - Middlewares
+
+
+## Aula 10 - Deploy
+
+
