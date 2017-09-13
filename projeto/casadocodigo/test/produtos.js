@@ -18,7 +18,7 @@ describe('#ProdutosController',function(){
 */
     it('#cadastro de novo produto com dados invalidos', function(done){
         request.post('/produtos')
-            .send({titulo: "", descricao: "novo livro"})
+            .send({titulo: "", descricao: "novo livro",preco:20.50})
             .expect(400, done);
     });
 
