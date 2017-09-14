@@ -5,8 +5,8 @@ module.exports = function(app) {
         var produtosDAO = new app.infra.ProdutosDAO(connection);
 
         produtosDAO.lista(function(err, results) {
-            if(erros){
-                return next(erros);
+            if(err){
+                return next(err);
             }
             res.format({
                 html: function(){
@@ -54,7 +54,7 @@ module.exports = function(app) {
             return;
         }
 
-        produtosDao.salva(produto,function(erros,resultado){
+        produtosDao.salva(produto,function(err,results){
             res.redirect("/produtos");
         });
 

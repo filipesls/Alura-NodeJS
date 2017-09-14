@@ -15,7 +15,7 @@ function createDBConnection(){
             host: 'localhost',
             user: 'root',
             password: 'root',
-            database: 'casadocodigo_nodejs_teste'
+            database: 'casadocodigo_nodejs_test'
         });
     }
 }

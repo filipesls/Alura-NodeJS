@@ -1,30 +1,40 @@
 var express = require('../config/express')();
 var request = require('supertest')(express);
 
-describe('#ProdutosController',function(){
-    it('#listagem de produtos json',function(done){
+describe('#ProdutosController', function() {
+
+    beforeEach(function(done) {
+        var connection = express.infra.connectionFactory();            
+        connection.query("delete from produtos", function(ex,result){
+            if(!ex){
+                done();
+            }
+        });
+     });
+
+    it('#listagem json', function(done) {
         request.get('/produtos')
-            .set('Accept','application/json')
-            .expect('Content-Type',/json/)
-            .expect(200,done);
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200, done);
     });
-/*
-    it('#listagem de produtos html',function(done){
-        request.get('/produtos')
-            .set('Accept','text/html')
-            .expect('Content-Type',/html/)
-            .expect(200,done);
-    });
-*/
-    it('#cadastro de novo produto com dados invalidos', function(done){
+
+    // it('#listagem de produtos html', function(done){
+    //     request.get('/produtos')
+    //         .set('Accept','text/html')
+    //         .expect('Content-Type',/html/)
+    //         .expect(200,done);
+    // });
+
+    it('#cadastro de novo produto com dados invalidos', function(done) {
         request.post('/produtos')
-            .send({titulo: "", descricao: "novo livro",preco:20.50})
+            .send({titulo: "", descricao: "novo livro"})
             .expect(400, done);
     });
 
-    it('#cadastro de novo produto com dados validos', function(done){
+    it('#cadastro de novo produto com dados validos', function(done) {
         request.post('/produtos')
-            .send({titulo:"titulo",descricao:"novo livro",preco:20.50})
-            .expect(302,done);
+            .send({titulo: "titulo", descricao: "novo livro", preco: 20.50})
+            .expect(302, done);
     });
 });
